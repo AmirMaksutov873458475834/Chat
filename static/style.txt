@@ -1,0 +1,165 @@
+/* ---------------- Основные стили ---------------- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    width: 90%;            /* Растягиваем на 90% экрана */
+    max-width: 600px;      /* Ограничиваем максимум */
+    margin: 20px auto;     /* Центрируем контейнер */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    height: 80vh;          /* Занимает 80% высоты экрана */
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* ---------------- Форма ---------------- */
+form {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[name="username"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4caf50;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* ---------------- Чат ---------------- */
+#chat {
+    flex: 1;                     /* Растягивается на всё доступное место */
+    overflow-y: auto;
+    border-top: 1px solid #eee;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#chat p {
+    margin: 5px 10px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background-color: #f1f0f0;
+    word-wrap: break-word;
+    max-width: 80%;             /* Чтобы сообщения не растягивались слишком */
+}
+
+#chat p b {
+    color: #333;
+}
+
+#chat p.self {
+    background-color: #dcf8c6;
+    align-self: flex-end;       /* Свои сообщения справа */
+    text-align: right;
+}
+
+/* ---------------- Приветствие ---------------- */
+.greeting {
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: #555;
+}
+
+/* ---------------- Адаптивность ---------------- */
+
+/* Планшеты */
+/* ---------------- Планшеты ---------------- */
+
+@media (min-width: 768px) {
+    .container {
+        width: 95%;
+        height: 85vh;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #chat {
+        flex: 1;
+        overflow-y: auto;
+        border-top: 1px solid #eee;
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    form {
+        margin-top: auto;  /* Отодвигаем форму вниз */
+        display: flex;
+        margin-bottom: 0;
+    }
+
+    input[type="text"], input[name="username"] {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    #chat p {
+        max-width: 85%;
+    }
+}
+
+
+/* Телефоны */
+@media (max-width: 480px) {
+    .container {
+        width: 98%;
+        height: 90vh;
+        padding: 10px;
+    }
+
+    input[type="text"], input[name="username"] {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    button {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    #chat p {
+        max-width: 90%;
+    }
+}

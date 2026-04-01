@@ -1,0 +1,7 @@
+{% for msg in messages %}
+    {% if session.username == msg.username %}
+        <p class="self"><b>{{ msg.username }}</b>: {{ msg.text }}</p>
+    {% else %}
+        <p><b>{{ msg.username }}</b>: {{ msg.text }}</p>
+    {% endif %}
+{% endfor %}

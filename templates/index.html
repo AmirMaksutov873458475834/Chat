@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Messenger</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        // Автообновление сообщений каждые 2 секунды
+        function refreshMessages() {
+            fetch("/messages")
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById("chat").innerHTML = html;
+                    // Скролл вниз к последнему сообщению
+                    document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
+                });
+        }
+        setInterval(refreshMessages, 2000);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Mini Messenger</h2>
+        
+        <div class="greeting">Привет, <b>{{ session.username }}</b>!</div>
+        
+        {% if "username" not in session %}
+            <form class="Input" id="Form_Name" method="POST">
+                <input id="Name_Text"name="username" placeholder="Введите ваше имя" required>
+                <button type="submit">Начать чат</button>
+            </form>
+        {% else %}
+
+       
+
+         <div id="chat">
+            {% include "messages.html" %}
+        </div>
+        
+        {% endif %}
+    
+        <form class="Input" id="Form_Massage" method="POST" action="{{ url_for('send') }}">
+                <input style="font-size: 35px; padding-left: 10px; padding-top: 20px;" id="Chat_Text" name="text" placeholder="Введите сообщение" required>
+                <button style="font-size: 35px; padding-left: 10px; padding-top: 20px;" type="submit">Отправить</button>
+        </form>
+    </div>
+</body>
+</html>
